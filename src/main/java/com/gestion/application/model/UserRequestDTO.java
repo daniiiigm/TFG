@@ -1,22 +1,18 @@
-package com.gestion.domain.model;
+package com.gestion.application.model;
 
 import com.gestion.domain.model.enums.Rol;
 import lombok.AllArgsConstructor;
-import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDate;
+
 @Data
-@Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class User {
-    private Long id;
+public class UserRequestDTO {
     private String name;
     private String surname;
     private String email;
     private Rol rol;
-    private LocalDate creationDate;
-
 }

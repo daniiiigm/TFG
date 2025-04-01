@@ -1,0 +1,75 @@
+package com.gestion.domain.service;
+
+import com.gestion.application.model.UpdateUserDTO;
+import com.gestion.application.model.UserRequestDTO;
+import com.gestion.domain.model.User;
+import com.gestion.domain.model.enums.Rol;
+import com.gestion.domain.ports.in.UserUseCase;
+import com.gestion.domain.ports.out.UserRepositoryPort;
+import jakarta.persistence.EntityNotFoundException;
+import jakarta.transaction.Transactional;
+import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Service;
+
+import java.time.LocalDate;
+import java.util.List;
+
+@Service
+@RequiredArgsConstructor
+public class UserService implements UserUseCase{
+
+    private final UserRepositoryPort userRepositoryPort;
+
+    @Override
+    public List<User> getAllUsers() {
+        return userRepositoryPort.getAllUsers();
+    }
+
+    @Override
+    public User getUserById(Long id) {
+
+        return userRepositoryPort.getUserById(id)
+                .orElseThrow(() -> new EntityNotFoundException("Usuario no encontrado con ID: " + id));
+    }
+
+    @Transactional
+    @Override
+    public User createUser(UserRequestDTO userRequest) {
+
+        User user = User.builder()
+                .name(userRequest.getName())
+                .surname(userRequest.getSurname())
+                .email(userRequest.getEmail())
+                .rol(userRequest.getRol())
+                .creationDate(LocalDate.now())
+                .build();
+
+        return userRepositoryPort.createUser(user);
+    }
+
+    @Transactional
+    @Override
+    public User deleteUser(Long id) {
+        User user = userRepositoryPort.getUserById(id)
+                .orElseThrow(() -> new IllegalArgumentException("User not found"));
+
+        userRepositoryPort.deleteUser(id);
+        return user;
+    }
+
+    @Override
+    public User updateUser(Long id, UpdateUserDTO updatedUser) {
+        User user = getUserById(id);
+        user.setName(updatedUser.getName());
+        user.setSurname(updatedUser.getSurname());
+        user.setEmail(updatedUser.getEmail());
+        return userRepositoryPort.updateUser(id,user);
+    }
+
+    @Override
+    public User updateUserRol(Long id, Rol rol) {
+        User user = getUserById(id);
+        user.setRol(rol);
+        return userRepositoryPort.updateUserRol(id,user);
+    }
+}
