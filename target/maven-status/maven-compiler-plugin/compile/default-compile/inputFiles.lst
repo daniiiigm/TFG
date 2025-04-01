@@ -1,1 +1,22 @@
-C:\Users\danig\Documents\TFG\src\main\java\com.gestionempleados\application\config\SpringBootConfiguration.java
+C:\Users\danig\Documents\TFG app\src\main\java\com\gestion\application\Application.java
+C:\Users\danig\Documents\TFG app\src\main\java\com\gestion\application\config\SpringBootConfiguration.java
+C:\Users\danig\Documents\TFG app\src\main\java\com\gestion\application\controller\DocumentController.java
+C:\Users\danig\Documents\TFG app\src\main\java\com\gestion\application\controller\RecordController.java
+C:\Users\danig\Documents\TFG app\src\main\java\com\gestion\application\controller\UserController.java
+C:\Users\danig\Documents\TFG app\src\main\java\com\gestion\application\model\DocumentDTO.java
+C:\Users\danig\Documents\TFG app\src\main\java\com\gestion\application\model\RecordDTO.java
+C:\Users\danig\Documents\TFG app\src\main\java\com\gestion\application\model\UserDTO.java
+C:\Users\danig\Documents\TFG app\src\main\java\com\gestion\domain\model\Document.java
+C:\Users\danig\Documents\TFG app\src\main\java\com\gestion\domain\model\Record.java
+C:\Users\danig\Documents\TFG app\src\main\java\com\gestion\domain\model\User.java
+C:\Users\danig\Documents\TFG app\src\main\java\com\gestion\domain\ports\in\UserUseCase.java
+C:\Users\danig\Documents\TFG app\src\main\java\com\gestion\domain\ports\out\UserInfrastructureUseCase.java
+C:\Users\danig\Documents\TFG app\src\main\java\com\gestion\domain\service\UserService.java
+C:\Users\danig\Documents\TFG app\src\main\java\com\gestion\infrastructure\persistence\entities\DocumentDAO.java
+C:\Users\danig\Documents\TFG app\src\main\java\com\gestion\infrastructure\persistence\entities\RecordDAO.java
+C:\Users\danig\Documents\TFG app\src\main\java\com\gestion\infrastructure\persistence\entities\UserDAO.java
+C:\Users\danig\Documents\TFG app\src\main\java\com\gestion\infrastructure\persistence\repositories\DocumentRepository.java
+C:\Users\danig\Documents\TFG app\src\main\java\com\gestion\infrastructure\persistence\repositories\RecordRepository.java
+C:\Users\danig\Documents\TFG app\src\main\java\com\gestion\infrastructure\persistence\repositories\UserRepository.java
+C:\Users\danig\Documents\TFG app\src\main\java\com\gestion\infrastructure\Rol.java
+C:\Users\danig\Documents\TFG app\src\main\java\com\gestion\infrastructure\service\UserInfrastructureService.java
