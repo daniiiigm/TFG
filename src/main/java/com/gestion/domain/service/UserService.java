@@ -73,3 +73,4 @@ public class UserService implements UserUseCase{
         return userRepositoryPort.updateUserRol(id,user);
     }
 }
+
