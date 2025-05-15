@@ -3,7 +3,7 @@ package com.gestion.domain.ports.in;
 import com.gestion.application.model.UpdateUserDTO;
 import com.gestion.application.model.UserRequestDTO;
 import com.gestion.domain.model.User;
-import com.gestion.domain.model.enums.Rol;
+import com.gestion.domain.model.enums.Role;
 
 import java.util.List;
 
@@ -14,5 +14,5 @@ public interface UserUseCase {
     User createUser(UserRequestDTO user);
     User deleteUser(Long id);
     User updateUser(Long id, UpdateUserDTO user);
-    User updateUserRol(Long id, Rol rol);
+    User updateUserRol(Long id, Role role);
 }

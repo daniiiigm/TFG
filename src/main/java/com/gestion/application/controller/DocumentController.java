@@ -17,7 +17,7 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping(path = "/documents")
+@RequestMapping(path = "api/documents")
 public class DocumentController {
 
     private final DocumentUseCase documentUseCase;

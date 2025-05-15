@@ -3,7 +3,7 @@ package com.gestion.domain.service;
 import com.gestion.application.model.UpdateUserDTO;
 import com.gestion.application.model.UserRequestDTO;
 import com.gestion.domain.model.User;
-import com.gestion.domain.model.enums.Rol;
+import com.gestion.domain.model.enums.Role;
 import com.gestion.domain.ports.in.UserUseCase;
 import com.gestion.domain.ports.out.UserRepositoryPort;
 import jakarta.persistence.EntityNotFoundException;
@@ -40,7 +40,7 @@ public class UserService implements UserUseCase{
                 .name(userRequest.getName())
                 .surname(userRequest.getSurname())
                 .email(userRequest.getEmail())
-                .rol(userRequest.getRol())
+                .role(userRequest.getRole())
                 .creationDate(LocalDate.now())
                 .build();
 
@@ -67,9 +67,9 @@ public class UserService implements UserUseCase{
     }
 
     @Override
-    public User updateUserRol(Long id, Rol rol) {
+    public User updateUserRol(Long id, Role role) {
         User user = getUserById(id);
-        user.setRol(rol);
+        user.setRole(role);
         return userRepositoryPort.updateUserRol(id,user);
     }
 }

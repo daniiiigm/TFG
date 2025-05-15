@@ -1,6 +1,6 @@
 package com.gestion.domain.model.enums;
 
-public enum Rol {
+public enum Role {
     ADMIN,
     EMPLOYEE,
     MANAGER

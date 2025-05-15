@@ -1,6 +1,6 @@
 package com.gestion.domain.model;
 
-import com.gestion.domain.model.enums.Rol;
+import com.gestion.domain.model.enums.Role;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -16,7 +16,7 @@ public class User {
     private String name;
     private String surname;
     private String email;
-    private Rol rol;
+    private Role role;
     private LocalDate creationDate;
 
 }

@@ -3,7 +3,7 @@ package com.gestion.application.controller;
 import com.gestion.application.model.UpdateUserDTO;
 import com.gestion.application.model.UserRequestDTO;
 import com.gestion.domain.model.User;
-import com.gestion.domain.model.enums.Rol;
+import com.gestion.domain.model.enums.Role;
 import com.gestion.domain.ports.in.UserUseCase;
 import io.swagger.v3.oas.annotations.Operation;
 import jakarta.persistence.EntityNotFoundException;
@@ -17,7 +17,7 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping(path = "/users")
+@RequestMapping(path = "api/users")
 public class UserController {
 
     private final UserUseCase userUseCase;
@@ -70,8 +70,8 @@ public class UserController {
     @Operation(summary = "Endpoint to update the rol of an existing user")
     @ResponseStatus(HttpStatus.OK)
     @PutMapping("/update-rol/{id}")
-    public ResponseEntity<User> updateUserRol(@PathVariable Long id, @RequestBody Rol rol) {
-        User user = userUseCase.updateUserRol(id, rol);
+    public ResponseEntity<User> updateUserRol(@PathVariable Long id, @RequestBody Role role) {
+        User user = userUseCase.updateUserRol(id, role);
         return ResponseEntity.ok(user);
     }
 

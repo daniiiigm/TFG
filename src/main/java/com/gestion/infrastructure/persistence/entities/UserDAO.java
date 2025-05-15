@@ -1,7 +1,7 @@
 package com.gestion.infrastructure.persistence.entities;
 
 
-import com.gestion.domain.model.enums.Rol;
+import com.gestion.domain.model.enums.Role;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
@@ -28,7 +28,7 @@ public class UserDAO {
     private String surname;
     private String email;
     @Enumerated(EnumType.STRING)
-    private Rol rol;
+    private Role role;
     @NotNull
     private LocalDate creationDate;
 }

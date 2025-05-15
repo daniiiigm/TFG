@@ -59,7 +59,7 @@ public class UserRepositoryAdapter implements UserRepositoryPort {
                 .name(dao.getName())
                 .surname(dao.getSurname())
                 .email(dao.getEmail())
-                .rol(dao.getRol())
+                .role(dao.getRole())
                 .creationDate(dao.getCreationDate())
                 .build();
     }
@@ -70,7 +70,7 @@ public class UserRepositoryAdapter implements UserRepositoryPort {
                 .name(user.getName())
                 .surname(user.getSurname())
                 .email(user.getEmail())
-                .rol(user.getRol())
+                .role(user.getRole())
                 .creationDate(user.getCreationDate())
                 .build();
     }

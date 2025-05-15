@@ -12,7 +12,7 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping(path = "/records")
+@RequestMapping(path = "api/records")
 public class RecordController {
 
     private final RecordUseCase recordUseCase;
