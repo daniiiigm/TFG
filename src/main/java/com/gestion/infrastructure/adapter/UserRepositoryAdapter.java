@@ -52,6 +52,11 @@ public class UserRepositoryAdapter implements UserRepositoryPort {
         return toDomain(updatedDAO);
     }
 
+    @Override
+    public Optional<User> findByEmail(String email){
+        return userRepository.findByEmail(email).map(this::toDomain);
+    }
+
 
     public User toDomain(UserDAO dao){
         return User.builder()
@@ -59,6 +64,7 @@ public class UserRepositoryAdapter implements UserRepositoryPort {
                 .name(dao.getName())
                 .surname(dao.getSurname())
                 .email(dao.getEmail())
+                .password(dao.getPassword())
                 .role(dao.getRole())
                 .creationDate(dao.getCreationDate())
                 .build();
@@ -70,6 +76,7 @@ public class UserRepositoryAdapter implements UserRepositoryPort {
                 .name(user.getName())
                 .surname(user.getSurname())
                 .email(user.getEmail())
+                .password(user.getPassword())
                 .role(user.getRole())
                 .creationDate(user.getCreationDate())
                 .build();

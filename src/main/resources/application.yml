@@ -7,3 +7,7 @@ spring:
   jpa:
     database-platform: org.hibernate.dialect.MySQL8Dialect
     show-sql: true
+
+jwt:
+  secret: ${JWT_SECRET:3yV3dk8hGZc6j7K1sX8Ql9b0WsVklzRmKStwX3MbU4Q=}
+  expiration: 3600000

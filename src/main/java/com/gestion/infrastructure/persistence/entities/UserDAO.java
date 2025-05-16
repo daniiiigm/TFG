@@ -27,6 +27,8 @@ public class UserDAO {
     @NotNull
     private String surname;
     private String email;
+    @NotNull
+    private String password;
     @Enumerated(EnumType.STRING)
     private Role role;
     @NotNull

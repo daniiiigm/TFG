@@ -1,5 +1,8 @@
 package com.gestion.domain.service;
 
+import com.gestion.application.config.JwtUtil;
+import com.gestion.application.config.PasswordEncoderUtil;
+import com.gestion.application.model.AuthRequestDTO;
 import com.gestion.application.model.UpdateUserDTO;
 import com.gestion.application.model.UserRequestDTO;
 import com.gestion.domain.model.User;
@@ -13,12 +16,14 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
 public class UserService implements UserUseCase{
 
     private final UserRepositoryPort userRepositoryPort;
+    private final JwtUtil jwtUtil;
 
     @Override
     public List<User> getAllUsers() {
@@ -35,11 +40,12 @@ public class UserService implements UserUseCase{
     @Transactional
     @Override
     public User createUser(UserRequestDTO userRequest) {
-
+        String encodedPassword = PasswordEncoderUtil.encodePassword(userRequest.getPassword());
         User user = User.builder()
                 .name(userRequest.getName())
                 .surname(userRequest.getSurname())
                 .email(userRequest.getEmail())
+                .password(encodedPassword)
                 .role(userRequest.getRole())
                 .creationDate(LocalDate.now())
                 .build();
@@ -71,6 +77,20 @@ public class UserService implements UserUseCase{
         User user = getUserById(id);
         user.setRole(role);
         return userRepositoryPort.updateUserRol(id,user);
+    }
+
+    @Override
+    public String login(AuthRequestDTO authRequest) {
+        Optional<User> userOptional = userRepositoryPort.findByEmail(authRequest.getEmail());
+
+        if (userOptional.isPresent()){
+            User user = userOptional.get();
+            if (PasswordEncoderUtil.matchesPassword( authRequest.getPassword(), user.getPassword())){
+                return jwtUtil.generateToken(user.getEmail());
+            }
+        }
+
+        return null;
     }
 }
 
