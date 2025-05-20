@@ -3,6 +3,7 @@ package com.gestion.domain.service;
 import com.gestion.application.config.JwtUtil;
 import com.gestion.application.config.PasswordEncoderUtil;
 import com.gestion.application.model.AuthRequestDTO;
+import com.gestion.application.model.LoginResponseDTO;
 import com.gestion.application.model.UpdateUserDTO;
 import com.gestion.application.model.UserRequestDTO;
 import com.gestion.domain.model.User;
@@ -80,13 +81,14 @@ public class UserService implements UserUseCase{
     }
 
     @Override
-    public String login(AuthRequestDTO authRequest) {
+    public LoginResponseDTO login(AuthRequestDTO authRequest) {
         Optional<User> userOptional = userRepositoryPort.findByEmail(authRequest.getEmail());
 
         if (userOptional.isPresent()){
             User user = userOptional.get();
             if (PasswordEncoderUtil.matchesPassword( authRequest.getPassword(), user.getPassword())){
-                return jwtUtil.generateToken(user.getEmail());
+                String token = jwtUtil.generateToken(user.getEmail(), user.getRole());
+                return  new LoginResponseDTO(token, user.getRole().name());
             }
         }
 
