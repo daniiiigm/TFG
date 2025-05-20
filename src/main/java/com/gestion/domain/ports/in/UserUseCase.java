@@ -1,6 +1,7 @@
 package com.gestion.domain.ports.in;
 
 import com.gestion.application.model.AuthRequestDTO;
+import com.gestion.application.model.LoginResponseDTO;
 import com.gestion.application.model.UpdateUserDTO;
 import com.gestion.application.model.UserRequestDTO;
 import com.gestion.domain.model.User;
@@ -16,5 +17,5 @@ public interface UserUseCase {
     User deleteUser(Long id);
     User updateUser(Long id, UpdateUserDTO user);
     User updateUserRol(Long id, Role role);
-    String login(AuthRequestDTO user);
+    LoginResponseDTO login(AuthRequestDTO user);
 }

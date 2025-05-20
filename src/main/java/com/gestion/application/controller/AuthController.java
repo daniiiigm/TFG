@@ -1,6 +1,7 @@
 package com.gestion.application.controller;
 import com.gestion.application.config.JwtUtil;
 import com.gestion.application.model.AuthRequestDTO;
+import com.gestion.application.model.LoginResponseDTO;
 import com.gestion.application.model.UserRequestDTO;
 import com.gestion.domain.ports.in.UserUseCase;
 import lombok.RequiredArgsConstructor;
@@ -22,15 +23,22 @@ public class AuthController {
 
 
     @PostMapping("/login")
-    public ResponseEntity<Map<String, String>> login(@RequestBody AuthRequestDTO requestDTO) {
-            String token = userUseCase.login(requestDTO);
+    public ResponseEntity<LoginResponseDTO> login(@RequestBody AuthRequestDTO requestDTO) {
+     /*       String token = userUseCase.login(requestDTO);
 
             if (token == null){
                 return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(null);
             }
 
             Map<String, String> response = new HashMap<>();
-            response.put("token", token);
-            return ResponseEntity.ok(response);
+            return ResponseEntity.ok(response);*/
+        LoginResponseDTO loginResponseDTO = userUseCase.login(requestDTO);
+
+        if (loginResponseDTO.getRole() == null || loginResponseDTO.getToken()==null){
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(null);
+        }
+
+        return ResponseEntity.ok(loginResponseDTO);
+
     }
 }
